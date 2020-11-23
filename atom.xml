@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>ROPASC</title>
+  
+  
+  <link href="https://marxti.github.io/atom.xml" rel="self"/>
+  
+  <link href="https://marxti.github.io/"/>
+  <updated>2020-11-23T09:59:56.281Z</updated>
+  <id>https://marxti.github.io/</id>
+  
+  <author>
+    <name>ROPASC</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>FreeNOS lib liballoc 分析</title>
+    <link href="https://marxti.github.io/blog/FreeNOS-lib-liballoc.html"/>
+    <id>https://marxti.github.io/blog/FreeNOS-lib-liballoc.html</id>
+    <published>2020-11-23T17:09:16.000Z</published>
+    <updated>2020-11-23T09:59:56.281Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>大致分析 liballoc 下的各个文件</p></blockquote><h3 id="Allocator-h-Allocator-cpp"><a href="#Allocator-h-Allocator-cpp" class="headerlink" title="Allocator.h Allocator.cpp"></a>Allocator.h Allocator.cpp</h3><p>内存分配器</p><blockquote><p>为什么不定义成抽象类? 搜了一下抽象基类和非抽象基类的对比,没搜到.</p></blockquote><h3 id="BitAllocator-h-BitAllocator-cpp"><a href="#BitAllocator-h-BitAllocator-cpp" class="headerlink" title="BitAllocator.h BitAllocator.cpp"></a>BitAllocator.h BitAllocator.cpp</h3><p>bit 内存分配器,继承自Allocator, 根据指定的块大小进行管理</p>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;大致分析 liballoc 下的各个文件&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="FreeNOS" scheme="https://marxti.github.io/categories/FreeNOS/"/>
+    
+    <category term="lib" scheme="https://marxti.github.io/categories/FreeNOS/lib/"/>
+    
+    <category term="liballoc" scheme="https://marxti.github.io/categories/FreeNOS/lib/liballoc/"/>
+    
+    
+    <category term="FreeNOS" scheme="https://marxti.github.io/tags/FreeNOS/"/>
+    
+    <category term="lib" scheme="https://marxti.github.io/tags/lib/"/>
+    
+    <category term="liballoc" scheme="https://marxti.github.io/tags/liballoc/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FreeNOS lib 分析</title>
+    <link href="https://marxti.github.io/blog/FreeNOS-lib.html"/>
+    <id>https://marxti.github.io/blog/FreeNOS-lib.html</id>
+    <published>2020-11-17T09:15:43.000Z</published>
+    <updated>2020-11-23T09:59:56.281Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>FreeNOS lib 下各个文件夹分析</p></blockquote><p>lib 包含了 FreeNOS 的所有库；</p><ol><li><a href="FreeNOS-lib-libstd.html">libstd 标准库</a></li></ol>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;FreeNOS lib 下各个文件夹分析&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="FreeNOS" scheme="https://marxti.github.io/categories/FreeNOS/"/>
+    
+    <category term="lib" scheme="https://marxti.github.io/categories/FreeNOS/lib/"/>
+    
+    
+    <category term="FreeNOS" scheme="https://marxti.github.io/tags/FreeNOS/"/>
+    
+    <category term="lib" scheme="https://marxti.github.io/tags/lib/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>FreeNOS lib libstd 分析</title>
+    <link href="https://marxti.github.io/blog/FreeNOS-lib-libstd.html"/>
+    <id>https://marxti.github.io/blog/FreeNOS-lib-libstd.html</id>
+    <published>2020-11-17T08:41:33.000Z</published>
+    <updated>2020-11-23T09:59:56.281Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>大致分析 libstd 下的各个文件</p></blockquote><p>libstd 是标准库,封装了一些容器以及一些基类;</p><h2 id="设计模式基类"><a href="#设计模式基类" class="headerlink" title="设计模式基类"></a>设计模式基类</h2><h3 id="Singleton-h"><a href="#Singleton-h" class="headerlink" title="Singleton.h"></a>Singleton.h</h3><p>单例模式基类，定义了 Singleton 模板类</p><blockquote><p>使用模板类作为单例模式基类的好处：派生类都遵循设计模式，模板类里的本类静态指针基于派生类，所以各个派生类不会相同；</p></blockquote><h3 id="Factory-h"><a href="#Factory-h" class="headerlink" title="Factory.h"></a>Factory.h</h3><p>工厂模式基类，定义了 Factory 模板类</p><p>抽象工厂模式基类，定义了 AbstractFactory 模板类</p><h2 id="容器类"><a href="#容器类" class="headerlink" title="容器类"></a>容器类</h2><h3 id="Container-h-Container-cpp"><a href="#Container-h-Container-cpp" class="headerlink" title="Container.h Container.cpp"></a>Container.h Container.cpp</h3><p>容器的抽象类,其他容器基本都是它的派生类,定义了一些容器的类基本方法</p><h3 id="Sequence-h"><a href="#Sequence-h" class="headerlink" title="Sequence.h"></a>Sequence.h</h3><p>顺序容器模板类,继承自Container(容器抽象类),Comparable(比较抽象模板类,添加对象比较方法)</p><h3 id="Associative-h"><a href="#Associative-h" class="headerlink" title="Associative.h"></a>Associative.h</h3><p>关联(键值对)容器模板类,继承自Container(容器抽象类),Comparable(比较抽象模板类,添加对象比较方法)</p><h3 id="BitArray-h-BitArray-cpp"><a href="#BitArray-h-BitArray-cpp" class="headerlink" title="BitArray.h BitArray.cpp"></a>BitArray.h BitArray.cpp</h3><p>bit数组容器类</p><h3 id="Queue-h"><a href="#Queue-h" class="headerlink" title="Queue.h"></a>Queue.h</h3><p>队列模板类,继承自Container(容器抽象类)</p><h3 id="List-h"><a href="#List-h" class="headerlink" title="List.h"></a>List.h</h3><p>链表模板类,继承自Sequence(顺序容器模板类)</p><h3 id="Array-h"><a href="#Array-h" class="headerlink" title="Array.h"></a>Array.h</h3><p>数组模板类,继承自Sequence(顺序容器模板类)</p><h3 id="Index-h"><a href="#Index-h" class="headerlink" title="Index.h"></a>Index.h</h3><p>索引(指针数组)模板类,继承自Sequence(顺序容器模板类)</p><h3 id="Vector-h"><a href="#Vector-h" class="headerlink" title="Vector.h"></a>Vector.h</h3><p>向量模板类,继承自Sequence(顺序容器模板类)</p><h3 id="String-h-String-cpp"><a href="#String-h-String-cpp" class="headerlink" title="String.h String.cpp"></a>String.h String.cpp</h3><p>字符串,继承自Sequence(顺序容器模板类)</p><h3 id="HashTable-h"><a href="#HashTable-h" class="headerlink" title="HashTable.h"></a>HashTable.h</h3><p>哈希表模板类,继承自Associative(关联容器模板类)</p><h2 id="迭代器类"><a href="#迭代器类" class="headerlink" title="迭代器类"></a>迭代器类</h2><h3 id="Iterator-h"><a href="#Iterator-h" class="headerlink" title="Iterator.h"></a>Iterator.h</h3><p>迭代器抽象模板类</p><h3 id="ConstIterator-h"><a href="#ConstIterator-h" class="headerlink" title="ConstIterator.h"></a>ConstIterator.h</h3><p>常量迭代器抽象模板类</p><h3 id="ListIterator-h"><a href="#ListIterator-h" class="headerlink" title="ListIterator.h"></a>ListIterator.h</h3><p>链表迭代器模板类,继承自Iterator(迭代器抽象模板类)</p><h3 id="HashIterator-h"><a href="#HashIterator-h" class="headerlink" title="HashIterator.h"></a>HashIterator.h</h3><p>哈希表迭代器模板类,继承自Iterator(迭代器抽象模板类)</p><h3 id="ConstHashIterator-h"><a href="#ConstHashIterator-h" class="headerlink" title="ConstHashIterator.h"></a>ConstHashIterator.h</h3><p>常量哈希表迭代器模板类,ConstIterator(常量迭代器抽象模板类)</p><h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><h3 id="Types-h"><a href="#Types-h" class="headerlink" title="Types.h"></a>Types.h</h3><p>类型,结构定义</p><h3 id="Macros-h"><a href="#Macros-h" class="headerlink" title="Macros.h"></a>Macros.h</h3><p>特殊值,函数宏定义,内联函数定义</p><h3 id="Assert-h"><a href="#Assert-h" class="headerlink" title="Assert.h"></a>Assert.h</h3><p>定义断言</p><h3 id="Log-h-Log-cpp"><a href="#Log-h-Log-cpp" class="headerlink" title="Log.h Log.cpp"></a>Log.h Log.cpp</h3><p>日志类,继承自Singleton(单例模式)</p><h3 id="Comparable-h"><a href="#Comparable-h" class="headerlink" title="Comparable.h"></a>Comparable.h</h3><p>比较抽象模板类</p><h3 id="MemoryBlock-h-MemoryBlock-cpp"><a href="#MemoryBlock-h-MemoryBlock-cpp" class="headerlink" title="MemoryBlock.h MemoryBlock.cpp"></a>MemoryBlock.h MemoryBlock.cpp</h3><p>内存块处理类,函数皆为public static </p><h3 id="HashFunction-h-HashFunction-cpp"><a href="#HashFunction-h-HashFunction-cpp" class="headerlink" title="HashFunction.h HashFunction.cpp"></a>HashFunction.h HashFunction.cpp</h3><p>哈希函数定义</p><h3 id="BitOperations-h"><a href="#BitOperations-h" class="headerlink" title="BitOperations.h"></a>BitOperations.h</h3><p>一些逻辑运算符定义</p><h3 id="Character-h"><a href="#Character-h" class="headerlink" title="Character.h"></a>Character.h</h3><p>一些ASCII字符判断或转换函数</p><h3 id="Callback-h"><a href="#Callback-h" class="headerlink" title="Callback.h"></a>Callback.h</h3><p>CallbackFunction,回调函数抽象类</p><p>Callback,回调类</p><blockquote><p><strong>为什么要多一层抽象？</strong></p><p>需要调用指针时，形参可以这样写：<code>CallbackFunction * callback</code></p><p>如果没有多一层：<code>Callback&lt;class T1,calss T2&gt; *callback</code>，为了发挥模板的力量，函数需要定义为模板</p></blockquote>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;大致分析 libstd 下的各个文件&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="FreeNOS" scheme="https://marxti.github.io/categories/FreeNOS/"/>
+    
+    <category term="lib" scheme="https://marxti.github.io/categories/FreeNOS/lib/"/>
+    
+    <category term="libstd" scheme="https://marxti.github.io/categories/FreeNOS/lib/libstd/"/>
+    
+    
+    <category term="FreeNOS" scheme="https://marxti.github.io/tags/FreeNOS/"/>
+    
+    <category term="lib" scheme="https://marxti.github.io/tags/lib/"/>
+    
+    <category term="libstd" scheme="https://marxti.github.io/tags/libstd/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深入探索 FreeNOS</title>
+    <link href="https://marxti.github.io/blog/InsideTheFreeNOS.html"/>
+    <id>https://marxti.github.io/blog/InsideTheFreeNOS.html</id>
+    <published>2020-11-14T17:02:17.000Z</published>
+    <updated>2020-11-23T09:59:56.281Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>深入探索 FreeNOS，基于 FreeNOS 版本 1.0.2</p></blockquote><p>项目一级文件夹下包含了 bin, config, kernel, lib, server, support, test 等7个文件夹;</p><ol><li><a href="FreeNOS-lib.html">lib 各种库</a><ol><li><a href="FreeNOS-lib-libstd.html">libstd 标准库</a></li></ol></li><li><a href>bin</a></li><li><a href>kernel</a></li><li><a href>server</a></li><li><a href>config</a></li><li><a href>support</a></li></ol>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;深入探索 FreeNOS，基于 FreeNOS 版本 1.0.2&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="FreeNOS" scheme="https://marxti.github.io/categories/FreeNOS/"/>
+    
+    
+    <category term="FreeNOS" scheme="https://marxti.github.io/tags/FreeNOS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>hexo 写文章的方法</title>
+    <link href="https://marxti.github.io/blog/hexo-Write.html"/>
+    <id>https://marxti.github.io/blog/hexo-Write.html</id>
+    <published>2020-10-23T13:56:19.000Z</published>
+    <updated>2020-11-23T09:59:56.281Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>本文包含 hexo 写文章的一些操作<br>hexo 使用 markdown 格式来写文章，所以需要先熟悉 markdown 语法。</p></blockquote><ol><li><p>文件头设置</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> <span class="string">hexo</span> <span class="string">写文章的方法</span> <span class="comment">#标题</span></span><br><span class="line"><span class="attr">date:</span> <span class="number">2020-10-23 13:56:19</span><span class="comment">#创建日期</span></span><br><span class="line"><span class="attr">tags:</span> [<span class="string">hexo写文章</span>,]<span class="comment">#标签，并列多标签</span></span><br><span class="line"><span class="attr">categories:</span> <span class="comment">#分类，并列多分类，中括号多层级</span></span><br><span class="line"><span class="bullet">-</span> [<span class="string">hexo</span>,<span class="string">xx</span>,]</span><br><span class="line"><span class="bullet">-</span> [<span class="string">hexo2</span>,<span class="string">xx2</span>,]</span><br><span class="line"><span class="attr">toc:</span><span class="comment">#目录</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span><span class="comment">#是否开启</span></span><br><span class="line">  <span class="attr">number:</span> <span class="literal">true</span><span class="comment">#显示数字</span></span><br><span class="line">  <span class="attr">max_depth:</span> <span class="number">6</span><span class="comment">#最深层级</span></span><br><span class="line"><span class="attr">reward_settings:</span><span class="comment">#打赏</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">false</span><span class="comment">#是否开启</span></span><br><span class="line">  <span class="attr">comment:</span> <span class="string">Donate</span> <span class="string">comment</span> <span class="string">here.</span><span class="comment">#打赏感谢</span></span><br><span class="line"><span class="attr">quicklink:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">delay:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">timeout:</span> <span class="number">3000</span></span><br><span class="line">  <span class="attr">priority:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">ignores:</span></span><br><span class="line"><span class="attr">comment:</span> <span class="literal">false</span> <span class="comment">#是否开启评论功能</span></span><br><span class="line"><span class="attr">top:</span> <span class="number">1</span> <span class="comment">#置顶层级(数字越大，优先级越高)</span></span><br></pre></td></tr></table></figure></li><li><p>创建文章</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># title 可以加双引号，重名会有提示</span></span><br><span class="line">hexo new title</span><br></pre></td></tr></table></figure></li><li><p>编辑文章</p><blockquote><p>使用自己喜欢的编辑器，知道文件路径即可</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim <span class="built_in">source</span>/_posts/title.md</span><br></pre></td></tr></table></figure></li><li><p>创建草稿</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># title 可以加双引号</span></span><br><span class="line">hexo new draft title</span><br></pre></td></tr></table></figure></li><li><p>编辑草稿</p><blockquote><p>使用自己喜欢的编辑器，知道文件路径即可</p></blockquote><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 vim 编辑文件</span></span><br><span class="line">vim <span class="built_in">source</span>/_drafts/title.md</span><br></pre></td></tr></table></figure></li><li><p>预览草稿</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo server --draft</span><br></pre></td></tr></table></figure></li><li><p>发布草稿</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 发布后，删除草稿</span></span><br><span class="line">hexo publish title</span><br></pre></td></tr></table></figure></li></ol>]]></content>
+    
+    
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;本文包含 hexo 写文章的一些操作&lt;br&gt;hexo 使用 markdown 格式来写文章，所以需要先熟悉 markdown 语法。&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    <category term="hexo" scheme="https://marxti.github.io/categories/hexo/"/>
+    
+    
+    <category term="hexo写文章" scheme="https://marxti.github.io/tags/hexo%E5%86%99%E6%96%87%E7%AB%A0/"/>
+    
+  </entry>
+  
+</feed>
